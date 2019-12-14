@@ -1,26 +1,18 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React,{Component} from 'react'
+import {Route,Switch,Redirect} from 'react-router-dom'
+import Login from './containers/login/login' //引入的不是我们定义的那个Login，而是根据我们定义的Login生成的那个新组件
+import Admin from './containers/admin/admin'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends Component{
+  render(){
+    return (
+      <div className="app">
+        <Switch>
+          <Route path="/login" component={Login}/>
+          <Route path="/admin" component={Admin}/>
+          <Redirect to='/admin'/>
+        </Switch>
+      </div>
+    )
+  }
 }
-
-export default App;
